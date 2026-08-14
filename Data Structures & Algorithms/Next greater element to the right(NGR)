@@ -1,0 +1,17 @@
+class Solution:
+    def nextLargerElement(self, arr):
+        # code here
+        stack,res=[],[]
+        for i in range(len(arr)-1,-1,-1):
+            """
+            1.if stack is empty then add -1 to res
+            2.pop the val from stack if it is less than curr list(arr) val
+            3. add this curr val in stack
+            """
+            while stack and stack[-1]<= arr[i]:
+                stack.pop()
+            res.append(stack[-1] if stack else -1)
+            
+            stack.append(arr[i])
+            
+        return res[::-1]
